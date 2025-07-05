@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { ArrowRight, Download, ExternalLink, MapPin, Mail, Phone, Zap, Code, Database } from 'lucide-react';
+import { ArrowRight, Download, ExternalLink, MapPin, Mail, Phone, Zap, Code, Database, Linkedin, Github } from 'lucide-react';
+import profileImg from '../assets/profile.jpg';
 
 const Hero = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -36,6 +37,22 @@ const Hero = () => {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(6,182,212,0.1),transparent_50%)]"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(139,92,246,0.1),transparent_50%)]"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(236,72,153,0.1),transparent_50%)]"></div>
+      </div>
+
+      {/* Floating Decorative Icons in Background */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <div className="absolute top-10 left-10 opacity-20 animate-float-slow">
+          <Code size={64} className="text-cyan-400" />
+        </div>
+        <div className="absolute top-10 right-20 opacity-20 animate-float-slower">
+          <Database size={64} className="text-purple-400" />
+        </div>
+        <div className="absolute bottom-20 left-20 opacity-20 animate-float">
+          <ArrowRight size={64} className="text-blue-400" />
+        </div>
+        <div className="absolute bottom-10 right-10 opacity-20 animate-float-slower">
+          <Zap size={64} className="text-pink-400" />
+        </div>
       </div>
 
       {/* Floating Particles */}
@@ -130,61 +147,36 @@ const Hero = () => {
             </div>
 
             <div className={`relative transition-all duration-1000 delay-300 ${isVisible ? 'translate-x-0 opacity-100' : 'translate-x-20 opacity-0'}`}>
-              {/* Floating Icons */}
-              {floatingIcons.map((item, index) => (
-                <div
-                  key={index}
-                  className="absolute z-20 text-cyan-400 animate-bounce"
-                  style={{
-                    left: `${20 + index * 30}%`,
-                    top: `${10 + index * 20}%`,
-                    animationDelay: `${item.delay}s`,
-                    animationDuration: '3s'
-                  }}
-                >
-                  <div className="p-3 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 backdrop-blur-xl border border-cyan-500/30 rounded-xl">
-                    <item.icon size={24} />
-                  </div>
-                </div>
-              ))}
-
-              <div className="relative z-10 bg-gradient-to-br from-gray-900/50 to-black/50 backdrop-blur-xl border border-cyan-500/30 p-8 rounded-3xl shadow-2xl">
-                <div className="w-full h-96 bg-gradient-to-br from-cyan-500/20 via-purple-500/20 to-pink-500/20 rounded-2xl flex items-center justify-center relative overflow-hidden">
-                  {/* Animated Grid */}
-                  <div className="absolute inset-0 bg-[linear-gradient(rgba(6,182,212,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(6,182,212,0.1)_1px,transparent_1px)] bg-[size:20px_20px] animate-pulse"></div>
-                  
-                  <div className="text-center relative z-10">
-                    <div className="w-32 h-32 bg-gradient-to-br from-cyan-500 to-purple-600 rounded-full mx-auto mb-6 flex items-center justify-center relative overflow-hidden group">
-                      <span className="text-white text-4xl font-bold relative z-10">JA</span>
-                      <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 skew-x-12"></div>
-                    </div>
-                    <p className="text-gray-400 font-medium">AI-Powered Developer</p>
-                  </div>
-                </div>
-                
-                <div className="mt-8 text-center">
-                  <div className="flex justify-center space-x-6">
-                    {[
-                      { href: "https://linkedin.com/in/jibbranali", label: "LinkedIn" },
-                      { href: "https://github.com/JibbranAli", label: "GitHub" }
-                    ].map((link, index) => (
-                      <a 
-                        key={index}
-                        href={link.href} 
-                        className="group relative p-3 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 backdrop-blur-xl border border-cyan-500/30 rounded-xl hover:from-cyan-500/30 hover:to-purple-500/30 transition-all duration-300"
-                      >
-                        <ExternalLink size={20} className="text-cyan-400 group-hover:scale-110 transition-transform duration-300" />
-                        <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-purple-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
-                      </a>
-                    ))}
-                  </div>
-                </div>
+              <div className="relative z-10 bg-gradient-to-br from-gray-900/50 to-black/50 backdrop-blur-xl border border-cyan-500/30 p-0 rounded-3xl shadow-2xl w-full h-96 flex items-center justify-center">
+                {/* Full Box Profile Image */}
+                <img 
+                  src={profileImg} 
+                  alt="Profile" 
+                  className="w-full h-full object-cover rounded-2xl shadow-xl transition-transform duration-300" 
+                  style={{ objectPosition: 'center' }}
+                />
+                {/* Overlay for gradient effect (optional) */}
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-purple-500/10 to-pink-500/10 rounded-2xl pointer-events-none"></div>
               </div>
               
-              {/* Decorative Elements */}
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-600/20 to-purple-600/20 rounded-3xl transform rotate-3 scale-105 opacity-30 blur-xl"></div>
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-600/20 to-pink-600/20 rounded-3xl transform -rotate-2 scale-110 opacity-20 blur-2xl"></div>
+              <div className="mt-8 text-center">
+                <div className="flex justify-center space-x-6">
+                  <a 
+                    href="https://linkedin.com/in/jibbranali" 
+                    className="group relative p-3 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 backdrop-blur-xl border border-cyan-500/30 rounded-xl hover:from-cyan-500/30 hover:to-purple-500/30 transition-all duration-300"
+                  >
+                    <Linkedin size={24} className="text-cyan-400 group-hover:scale-110 transition-transform duration-300" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-purple-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+                  </a>
+                  <a 
+                    href="https://github.com/JibbranAli" 
+                    className="group relative p-3 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 backdrop-blur-xl border border-cyan-500/30 rounded-xl hover:from-cyan-500/30 hover:to-purple-500/30 transition-all duration-300"
+                  >
+                    <Github size={24} className="text-cyan-400 group-hover:scale-110 transition-transform duration-300" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-purple-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
